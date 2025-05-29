@@ -11,28 +11,40 @@ function addTodo() {
 }
 
 
-const secondTo_doList = [];
+
+
+
+
+// Na here the second one start from
+
+const secondTo_doList = [{
+    name: '',
+    due_date: ''
+}];
+
+function renderList() {
+  let todoListHtml = "";
+  for (let i = 0; i < secondTo_doList.length; i++) {
+    const element = secondTo_doList[i];
+    todoListHtml += `<p>${element} <button onclick="Delete(${i})">Delete</button></p>`;
+  }
+  document.querySelector('.display').innerHTML = todoListHtml;
+}
 
 function secondAddTodo() {
-    const SecondInputed_todo = document.querySelector('.second_todo');
-    const SecondName = SecondInputed_todo.value;
-    
-    secondTo_doList.push(SecondName);
-    console.log(secondTo_doList);
+  const input = document.querySelector('.second_todo');
+  const value = input.value;
+  if (value === "") {
+    return;
+  } else {
+    secondTo_doList.push(value);
+    input.value = '';
+    renderList();
+  }
+  
+}
 
-    let todoListHtml = "";
-
-    for (let i = 0; i < secondTo_doList.length; i++) {
-        const element = secondTo_doList[i];
-        const html = `<p> ${element} </p>`;
-        todoListHtml += html;
-        console.log(todoListHtml);
-        document.querySelector('.display').innerHTML = todoListHtml;
-        
-    }
-
-
-
-
-    SecondInputed_todo.value = "";
+function Delete(i) {
+  secondTo_doList.splice(i, 1);
+  renderList();
 }
