@@ -20,9 +20,14 @@ function secondAddTodo() {
     secondTo_doList.push(SecondName);
     console.log(secondTo_doList);
 
+    let todoListHtml = "";
+
     for (let i = 0; i < secondTo_doList.length; i++) {
         const element = secondTo_doList[i];
-        const html = "<p></p>"
+        const html = `<p> ${element} </p>`;
+        todoListHtml += html;
+        console.log(todoListHtml);
+        document.querySelector('.display').innerHTML = todoListHtml;
         
     }
 
