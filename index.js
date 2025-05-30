@@ -45,10 +45,6 @@ function addTodo() {
   
 // }
 
-// function Delete(i) {
-//   secondTo_doList.splice(i, 1);
-//   renderList();
-// }
 
 const secondTo_doList = [];
 
@@ -58,10 +54,9 @@ function renderList() {
   for (let i = 0; i < secondTo_doList.length; i++) {
     const { name, dueDate } = secondTo_doList[i];
     todoListHtml += `
-      <p>
-        ${name} (Due: ${dueDate})
-        <button onclick="Delete(${i})">Delete</button>
-      </p>
+      <div>${name} </div> 
+      <div> Due: ${dueDate} </div>
+      <button onclick="Delete(${i})" class="delete_B">Delete</button>
     `;
   }
 
