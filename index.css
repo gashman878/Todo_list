@@ -1,15 +1,20 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
 }
+h1{
+    text-align: center;
+}
 .display, .bigger_display{
     display: grid;
     grid-template-columns: 200px 150px 100px;
     column-gap: 10px;
     row-gap: 10px;
     align-items: center;
+
 }
 .bigger_display{
     align-items: stretch;
+    justify-content: center;
 }
 .second_todo, .due_Date{
     font-size: 15px;
