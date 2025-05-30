@@ -17,34 +17,78 @@ function addTodo() {
 
 // Na here the second one start from
 
-const secondTo_doList = [{
-    name: '',
-    due_date: ''
-}];
+// const secondTo_doList = [{}];
+
+// function renderList() {
+//   let todoListHtml = "";
+//   for (let i = 0; i < secondTo_doList.length; i++) {
+//     const elementObject = secondTo_doList[i];
+//     const {name, dueDate} = elementObject;
+//     const html = `<p>${name} ${dueDate} <button onclick="Delete(${i})">Delete</button></p>`;
+//     todoListHtml += html;
+//   }
+//   document.querySelector('.display').innerHTML = todoListHtml;
+// }
+
+// function secondAddTodo() {
+//   const input = document.querySelector('.second_todo');
+//   const value = input.value;
+//   const dateInputeElement = document.querySelector('.due_Date');
+//   const due_Date = dateInputeElement.value;
+//   if (value === "") {
+//     return;
+//   } else {
+//     secondTo_doList.push({value: value, due_Date: due_Date});
+//     input.value = '';
+//     renderList();
+//   }
+  
+// }
+
+// function Delete(i) {
+//   secondTo_doList.splice(i, 1);
+//   renderList();
+// }
+
+const secondTo_doList = [];
 
 function renderList() {
   let todoListHtml = "";
+
   for (let i = 0; i < secondTo_doList.length; i++) {
-    const element = secondTo_doList[i];
-    todoListHtml += `<p>${element} <button onclick="Delete(${i})">Delete</button></p>`;
+    const { name, dueDate } = secondTo_doList[i];
+    todoListHtml += `
+      <p>
+        ${name} (Due: ${dueDate})
+        <button onclick="Delete(${i})">Delete</button>
+      </p>
+    `;
   }
+
   document.querySelector('.display').innerHTML = todoListHtml;
 }
 
 function secondAddTodo() {
   const input = document.querySelector('.second_todo');
-  const value = input.value;
-  if (value === "") {
-    return;
-  } else {
-    secondTo_doList.push(value);
-    input.value = '';
-    renderList();
+  const dateInput = document.querySelector('.due_Date');
+
+  const name = input.value.trim();
+  const dueDate = dateInput.value;
+
+  if (name === "" || dueDate === "") {
+    return; // Do nothing if either field is empty
   }
-  
+
+  secondTo_doList.push({ name, dueDate });
+
+  input.value = "";
+  dateInput.value = "";
+
+  renderList();
 }
 
 function Delete(i) {
   secondTo_doList.splice(i, 1);
   renderList();
 }
+
